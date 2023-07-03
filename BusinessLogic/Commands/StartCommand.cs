@@ -1,5 +1,7 @@
 ﻿using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
 using TransBotPol.BusinessLogic.Interfaces;
 
 namespace TransBotPol.BusinessLogic.Commands
@@ -12,8 +14,11 @@ namespace TransBotPol.BusinessLogic.Commands
         public async Task Execute(Update update)
         {
             long chatId = update.Message.Chat.Id;
+            var checkMember = new InlineKeyboardMarkup(InlineKeyboardButton.WithUrl("ПРОВЕРИТЬ", "https://t.me/c/1575923230/6/33"));
             await Client.SendTextMessageAsync(chatId, "Добрый день! Благодарим за выбор нашей компании!\n" +
-                "Для получения краткого списка информации о нас нажмите /help!");
+                "Этот бот <b>только для подписчиков.</b> Для для запуска нужна проверка подписки.", 
+                parseMode: ParseMode.Html,
+                replyMarkup: checkMember);
         }
     }
 }
