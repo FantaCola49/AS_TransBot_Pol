@@ -1,8 +1,0 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/TransBotPol/.vs/TransBotPol/FileContentIndex
-/TransBotPol/.vs/TransBotPol
-/TransBotPol/bin/Debug/net7.0
-/TransBotPol/obj
