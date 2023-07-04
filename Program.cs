@@ -29,6 +29,9 @@ namespace TransBotPol
             if (string.IsNullOrEmpty(update.Message.Text)) //если чел прислал пустоту
                 return;
 
+            // Да ёпты как это сделать?
+            //if (update.Message.NewChatMembers.Contains())
+
             // Фиксируем ответ
             Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(update));
             CommandExecutor exe = new CommandExecutor();

@@ -7,7 +7,7 @@ namespace TransBotPol.BusinessLogic
     /// </summary>
     public class Bot
     {
-        private static readonly string _botToken = "6303121427:AAE_THql3BTEbPCF3kD62V6ljNoStF-pNmk";
+        private static readonly string _botToken = "6314833718:AAFXcmQ0inMxxh-uNpVWpSDDALsPnu4RgTM";
         private static TelegramBotClient client { get; set; }
 
         public static TelegramBotClient GetTelegramBot()

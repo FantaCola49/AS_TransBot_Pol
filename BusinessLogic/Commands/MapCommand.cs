@@ -13,15 +13,40 @@ namespace TransBotPol.BusinessLogic.Commands
 
         public async Task Execute(Update update)
         {
-            long chatId = update.Message.Chat.Id;
-            var contacts = new InlineKeyboardMarkup(InlineKeyboardButton.WithUrl("🥸 НАШИ КОНТАКТЫ 🥸", "https://t.me/c/1575923230/6/33"));
-
-            await Client.SendTextMessageAsync(chatId, "Предлогаем вам ознакомиться с нашими услугами!" +
-                "\n[\U0001f978 НАШИ КОНТАКТЫ \U0001f978](https://t.me/c/1575923230/6/33)",
-                parseMode: ParseMode.Markdown,
-                replyMarkup: contacts);
+            await Client.SendTextMessageAsync(update.Message.Chat.Id, "<b>Предлогаем вам ознакомиться с нашими услугами!</b>",
+                parseMode: ParseMode.Html,
+                replyMarkup: GetKeyboard());
         }
 
-        
+        /// <summary>
+        /// Создаст клавиатуру для ответа
+        /// </summary>
+        /// <returns></returns>
+        private InlineKeyboardMarkup GetKeyboard()
+        {
+            InlineKeyboardButton services = new InlineKeyboardButton("GENERAL") { Url = "https://t.me/AS_Trans2/1/29" };
+            InlineKeyboardButton aboutUs = new InlineKeyboardButton("МЫ И НАШИ УСЛУГИ") { Url = "https://t.me/AS_Trans2/6/32" };
+            InlineKeyboardButton storrages = new InlineKeyboardButton("СКЛАДЫ") { Url = "https://t.me/AS_Trans2/8/24" };
+            InlineKeyboardButton contacts = new InlineKeyboardButton("КОНТАКТЫ") { Url = "https://t.me/AS_Trans2/6/33" };
+
+            // Кнопки по рядам
+            InlineKeyboardButton[][] buttons = new InlineKeyboardButton[][]
+            {
+                // Первый ряд
+                new InlineKeyboardButton[] {services},
+                // Второй ряд
+                new InlineKeyboardButton[] {aboutUs},
+                // Третий ряд
+                new InlineKeyboardButton[] {storrages},
+                // Четвёртый ряд
+                new InlineKeyboardButton[] {contacts},
+            };
+
+            // Клавиатура
+            InlineKeyboardMarkup keyboard = new InlineKeyboardMarkup(buttons);
+            return keyboard;
+        }
+
+
     }
 }

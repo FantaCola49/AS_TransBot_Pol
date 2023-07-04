@@ -14,11 +14,11 @@ namespace TransBotPol.BusinessLogic.Commands
         public async Task Execute(Update update)
         {
             long chatId = update.Message.Chat.Id;
-            var checkMember = new InlineKeyboardMarkup(InlineKeyboardButton.WithUrl("ПРОВЕРИТЬ", "https://t.me/c/1575923230/6/33"));
+            //var checkMember = new InlineKeyboardMarkup(InlineKeyboardButton.("ПРОВЕРИТЬ", ));
             await Client.SendTextMessageAsync(chatId, "Добрый день! Благодарим за выбор нашей компании!\n" +
                 "Этот бот <b>только для подписчиков.</b> Для для запуска нужна проверка подписки.", 
-                parseMode: ParseMode.Html,
-                replyMarkup: checkMember);
+                parseMode: ParseMode.Html
+                /*replyMarkup: checkMember*/);
         }
     }
 }
