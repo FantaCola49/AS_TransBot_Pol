@@ -8,7 +8,7 @@ namespace TransBotPol.BusinessLogic.Functions
         /// <summary>
         /// Название группы
         /// </summary>
-        private readonly string _chatNickName = @"@AS_Trans2";
+        private readonly string _chatNickName = "@AS_Trans2";
         private int userId;
 
         public TelegramBotClient bot => Bot.GetTelegramBot();

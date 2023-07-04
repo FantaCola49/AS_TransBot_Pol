@@ -29,6 +29,7 @@ namespace TransBotPol.BusinessLogic.Commands
             InlineKeyboardButton storrages = new InlineKeyboardButton("СКЛАДЫ") { Url = "https://t.me/AS_Trans2/8/24" };
             InlineKeyboardButton contacts = new InlineKeyboardButton("КОНТАКТЫ") { Url = "https://t.me/AS_Trans2/6/33" };
 
+
             // Кнопки по рядам
             InlineKeyboardButton[][] buttons = new InlineKeyboardButton[][]
             {
@@ -40,6 +41,11 @@ namespace TransBotPol.BusinessLogic.Commands
                 new InlineKeyboardButton[] {storrages},
                 // Четвёртый ряд
                 new InlineKeyboardButton[] {contacts},
+                //new InlineKeyboardButton[] 
+                //{
+                //    TODO:Разобраться с работой CallBackQuery!
+                //    InlineKeyboardButton.WithCallbackData("НАЗАД",)
+                //}
             };
 
             // Клавиатура

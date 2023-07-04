@@ -6,15 +6,15 @@ using TransBotPol.BusinessLogic.Interfaces;
 
 namespace TransBotPol.BusinessLogic.Commands
 {
-    public class PriceCommand : IBotCommand
+    public class FaqCommand : IBotCommand
     {
-        public string Name => "/price";
+        public string Name => "/faq";
 
         public TelegramBotClient Client => Bot.GetTelegramBot();
 
         public async Task Execute(Update update)
         {
-            await Client.SendTextMessageAsync(update.Message.Chat.Id, "<b>Цены на наши перевозки!</b>",
+            await Client.SendTextMessageAsync(update.Message.Chat.Id, "<b>Ответы на часто задаваемые вопросы вы можете найти здесь!</b>",
                 parseMode: ParseMode.Html,
                 replyMarkup: GetKeyboard());
         }
@@ -25,20 +25,16 @@ namespace TransBotPol.BusinessLogic.Commands
         /// <returns></returns>
         private InlineKeyboardMarkup GetKeyboard()
         {
-            InlineKeyboardButton goods = new InlineKeyboardButton("ДОСТАВКА ГРУЗОВ") { Url = "https://t.me/AS_Trans2/45/50" };
-            InlineKeyboardButton homePets = new InlineKeyboardButton("ПЕРЕВОЗКА ДОМАШНИХ ЖИВОТНЫХ") { Url = "https://t.me/AS_Trans2/45/54" };
-            InlineKeyboardButton cars = new InlineKeyboardButton("ПЕРЕГОН МАШИН") { Url = "https://t.me/AS_Trans2/45/56" };
-
+            InlineKeyboardButton animals = new InlineKeyboardButton("FAQ ПО ПЕРЕВОЗКЕ ЖИВОТНЫХ") { Url = "https://telegra.ph/CHasto-zadavaemye-voprosy-o-perevozke-pitomcev-06-29" };
+            InlineKeyboardButton passangers = new InlineKeyboardButton("FAQ ПРО ПЕРЕВОЗКУ ПАССАЖИРОВ") { Url = "https://telegra.ph/Otvety-na-chastye-voprosy-o-perevozke-passazhirov-06-29" };
 
             // Кнопки по рядам
             InlineKeyboardButton[][] buttons = new InlineKeyboardButton[][]
             {
                 // Первый ряд
-                new InlineKeyboardButton[] {goods},
+                new InlineKeyboardButton[] {animals},
                 // Второй ряд
-                new InlineKeyboardButton[] {homePets},
-                // Третий ряд
-                new InlineKeyboardButton[] {cars},
+                new InlineKeyboardButton[] {passangers},
             };
 
             // Клавиатура
