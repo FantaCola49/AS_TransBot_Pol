@@ -9,10 +9,10 @@ namespace TransBotPol.BusinessLogic.Functions
         /// Название группы
         /// </summary>
         private readonly string _chatNickName = "@AS_Trans2";
-        private int userId;
+        private long groupId = -1001575923230;
 
         public TelegramBotClient bot => Bot.GetTelegramBot();
-        public ChatMember CheckGroupMembership(long chatId, long userId)
+        public ChatMember CheckGroupMembership(long userId, long chatId)
         {
             var response = bot.GetChatMemberAsync(chatId, userId);
             return response.Result;
@@ -20,8 +20,9 @@ namespace TransBotPol.BusinessLogic.Functions
 
         public ChatMember CheckGroupMembership(long userId)
         {
-            var response = bot.GetChatMemberAsync(_chatNickName, userId);
+            var response = bot.GetChatMemberAsync(groupId, userId);
             return response.Result;
         }
+
     }
 }

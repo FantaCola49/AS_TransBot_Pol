@@ -16,7 +16,8 @@ namespace TransBotPol.BusinessLogic.Commands
             long chatId = update.Message.Chat.Id;
             //var checkMember = new InlineKeyboardMarkup(InlineKeyboardButton.("ПРОВЕРИТЬ", ));
             await Client.SendTextMessageAsync(chatId, "Добрый день! Благодарим за выбор нашей компании!\n" +
-                "Этот бот <b>только для подписчиков.</b> Для для запуска нужна проверка подписки.", 
+                "Этот бот поможет вам быстрее ознакомиться с ассортиментом нашей группы @AS_Trans2." +
+                "\nДля выбора команды воспользуйтесь Menu или /help", 
                 parseMode: ParseMode.Html
                 /*replyMarkup: checkMember*/);
         }

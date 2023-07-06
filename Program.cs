@@ -1,29 +1,42 @@
-﻿using System;
-using Telegram.Bot;
+﻿using Telegram.Bot;
+using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using TransBotPol.BusinessLogic;
 using TransBotPol.BusinessLogic.Commands;
-using TransBotPol.BusinessLogic.Functions;
 
 namespace TransBotPol
 {
     public class Program
     {
         public static TelegramBotClient bot => Bot.GetTelegramBot();
-        private static CheckMembership check;
 
         static void Main(string[] args)
         {
             var bot = Bot.GetTelegramBot();
             Console.WriteLine("Запущен бот " + bot.GetMeAsync().Result.FirstName);
-            check = new CheckMembership();
-            //var cts = new CancellationTokenSource();
-            //var cancellationToken = cts.Token;
+            var cts = new CancellationTokenSource();
+            var cancellationToken = cts.Token;
 
+            // На что реагируем?
+            var receiverOptions = new ReceiverOptions
+            {
+                AllowedUpdates = new UpdateType[]
+                {
+                    UpdateType.Message,
+                    UpdateType.ChatMember,
+                    UpdateType.MyChatMember,
+                    UpdateType.CallbackQuery
+
+                }
+            };
+
+            // Простираем наш взор к Внешнему Миру
             bot.StartReceiving(
                 HandleUpdateAsync,
-                HandleErrorAsync
+                HandleErrorAsync,
+                receiverOptions: receiverOptions,
+                cancellationToken
             );
             Console.ReadLine();
         }
@@ -39,20 +52,9 @@ namespace TransBotPol
         public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(update));
-            // Тут обрабатываются подписки и добавления в группы
-            if (update.Type == UpdateType.ChatMember && update.Message.NewChatMembers != null)
-            {
-                foreach (var newMember in update.Message.NewChatMembers)
-                {
-                    if (check.CheckGroupMembership(newMember.Id).Status == ChatMemberStatus.Left)
-                        Console.WriteLine("Пропал подпещик!");
-                    else if (check.CheckGroupMembership(newMember.Id).Status == ChatMemberStatus.Member)
-                        Console.WriteLine("Добавили молютку подпещика!");
-                }
-            }
 
-            // Тут обрабатываются все команды для ботецкого
-            else if (update.Type == UpdateType.Message && !string.IsNullOrEmpty(update.Message.Text))
+            // Тут обрабатываются все команды для ботецкого, которые мы пишем напрямую
+            if (update.Type == UpdateType.Message && !string.IsNullOrEmpty(update.Message.Text))
             {
                 // Фиксируем ответ
                 Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(update));

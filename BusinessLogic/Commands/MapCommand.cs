@@ -24,10 +24,10 @@ namespace TransBotPol.BusinessLogic.Commands
         /// <returns></returns>
         private InlineKeyboardMarkup GetKeyboard()
         {
-            InlineKeyboardButton services = new InlineKeyboardButton("GENERAL") { Url = "https://t.me/AS_Trans2/1/29" };
-            InlineKeyboardButton aboutUs = new InlineKeyboardButton("МЫ И НАШИ УСЛУГИ") { Url = "https://t.me/AS_Trans2/6/32" };
-            InlineKeyboardButton storrages = new InlineKeyboardButton("СКЛАДЫ") { Url = "https://t.me/AS_Trans2/8/24" };
-            InlineKeyboardButton contacts = new InlineKeyboardButton("КОНТАКТЫ") { Url = "https://t.me/AS_Trans2/6/33" };
+            InlineKeyboardButton services = new InlineKeyboardButton("GENERAL") { Url = "https://t.me/AS_Trans2/1/92" };
+            InlineKeyboardButton aboutUs = new InlineKeyboardButton("МЫ И НАШИ УСЛУГИ") { Url = "https://t.me/AS_Trans2/6/97" };
+            InlineKeyboardButton storrages = new InlineKeyboardButton("СКЛАДЫ") { Url = "https://t.me/AS_Trans2/8/93" };
+            InlineKeyboardButton contacts = new InlineKeyboardButton("КОНТАКТЫ") { Url = "https://t.me/AS_Trans2/6/100" };
 
 
             // Кнопки по рядам
